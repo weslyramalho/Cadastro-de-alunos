@@ -1,5 +1,37 @@
 package com.wr.cadastro;
 
-public class AlunosController {
+import java.util.ArrayList;
+import java.util.List;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/alunos")
+public class AlunosController {
+	
+	private List<Alunos> alunosList;
+	
+	public AlunosController() {
+	this.alunosList= new ArrayList<>();
+	
+
+	}
+	
+	@GetMapping
+	public List<Alunos> alunos() {
+		return alunosList;
+	}
+	
+	@PostMapping
+	public void addNovoAluno(@RequestBody Alunos alunos) {
+		int id = alunosList.size() + 1;
+		alunos.setId(id);
+		alunosList.add(alunos);
+		
+	}
+	
 }
