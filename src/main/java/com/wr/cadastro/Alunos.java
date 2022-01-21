@@ -1,22 +1,22 @@
 package com.wr.cadastro;
 
 public class Alunos {
-	private int id;
+	private Integer id;
 	private String nome;
 	private int idade;
 	
-	public Alunos(int id, String nome, int idade) {
+	public Alunos(Integer id, String nome, int idade) {
 		super();
 		this.id = id;
 		this.nome = nome;
 		this.idade = idade;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
