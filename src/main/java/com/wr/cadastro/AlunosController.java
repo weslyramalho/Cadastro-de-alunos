@@ -36,6 +36,14 @@ public class AlunosController {
 		return alunosList;
 	}
 	
+	@GetMapping("/{id}")
+	public Alunos findById(@PathVariable("id") Integer id) {
+		return this.alunosList.stream()
+				.filter(al -> al.getId().equals(id))
+				.findFirst()
+				.orElse(null);
+	}
+	
 	@PostMapping
 	public void addNovoAluno(@RequestBody Alunos alunos) {
 		int id = alunosList.size() + 1;
