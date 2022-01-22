@@ -3,9 +3,9 @@ package com.wr.cadastro;
 public class Alunos {
 	private Integer id;
 	private String nome;
-	private int idade;
+	private Integer idade;
 	
-	public Alunos(Integer id, String nome, int idade) {
+	public Alunos(Integer id, String nome, Integer idade) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -28,11 +28,11 @@ public class Alunos {
 		this.nome = nome;
 	}
 
-	public int getIdade() {
+	public Integer getIdade() {
 		return idade;
 	}
 
-	public void setIdade(int idade) {
+	public void setIdade(Integer idade) {
 		this.idade = idade;
 	}
 	

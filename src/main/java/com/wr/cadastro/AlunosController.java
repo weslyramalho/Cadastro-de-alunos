@@ -27,7 +27,7 @@ public class AlunosController {
 	}
 	
 	@GetMapping
-	public List<Alunos> findAll(@RequestParam(required = false) String alunos) {
+	public List<Alunos> findAllPorNome(@RequestParam(required = false) String alunos) {
 		if(alunos != null) {
 			return alunosList.stream()
 					.filter(al -> al.getNome().contains(alunos))
@@ -35,6 +35,18 @@ public class AlunosController {
 		}
 		return alunosList;
 	}
+	@GetMapping
+	public List<Alunos> findAllPorIdade(@RequestParam(required = false) Integer idade) {
+		if(idade != null) {
+			return alunosList.stream()
+					.filter(al -> al.getIdade().equals(idade))
+					.findFirst()
+					.orElse(null);
+					
+		}
+		return alunosList;
+	}
+	
 	
 	@GetMapping("/{id}")
 	public Alunos findById(@PathVariable("id") Integer id) {
