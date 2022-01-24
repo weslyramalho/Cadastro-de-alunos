@@ -40,9 +40,7 @@ public class AlunosController {
 		if(idade != null) {
 			return alunosList.stream()
 					.filter(al -> al.getIdade().equals(idade))
-					.findFirst()
-					.orElse(null);
-					
+					.collect(Collectors.toList());		
 		}
 		return alunosList;
 	}
