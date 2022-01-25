@@ -29,6 +29,7 @@ public class AlunosController {
 	
 	@GetMapping
 	public List<Alunos> findAllPorNome(@RequestParam(required = false) String alunos) {
+	
 		if(alunos != null) {
 			return alunosList.stream()
 					.filter(al -> al.getNome().contains(alunos))
