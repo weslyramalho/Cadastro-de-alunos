@@ -6,7 +6,6 @@ public class Alunos {
 	private Integer idade;
 	
 	public Alunos(Integer id, String nome, Integer idade) {
-		super();
 		this.id = id;
 		this.nome = nome;
 		this.idade = idade;

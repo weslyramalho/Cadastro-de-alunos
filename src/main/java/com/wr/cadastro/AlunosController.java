@@ -26,6 +26,7 @@ public class AlunosController {
 
 	}
 	
+	
 	@GetMapping
 	public List<Alunos> findAllPorNome(@RequestParam(required = false) String alunos) {
 		if(alunos != null) {
@@ -35,15 +36,21 @@ public class AlunosController {
 		}
 		return alunosList;
 	}
+	/*
 	@GetMapping
 	public List<Alunos> findAllPorIdade(@RequestParam(required = false) Integer idade) {
+		
 		if(idade != null) {
 			return alunosList.stream()
 					.filter(al -> al.getIdade().equals(idade))
-					.collect(Collectors.toList());		
+					.collect(Collectors.toList());
 		}
 		return alunosList;
+		
 	}
+	*/
+
+
 	
 	
 	@GetMapping("/{id}")
