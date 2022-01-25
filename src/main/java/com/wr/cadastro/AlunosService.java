@@ -16,6 +16,8 @@ public class AlunosService {
 			return alunos;
 		}catch(IOException ioException) {
 			return Collections.emptyList();
+		}finally {
+			System.out.println("Deu ruimm,");
 		}
 		
 	}

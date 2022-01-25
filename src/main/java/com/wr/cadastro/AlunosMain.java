@@ -7,7 +7,7 @@ public class AlunosMain {
 	public static void main(String[] args) throws IOException{
 		
 		AlunosService alunosService = new AlunosService();
-		alunosService.findAll();
+		alunosService.findAll().stream().forEach(System.out::println());;
 		
 
 	}
