@@ -14,7 +14,7 @@ public class GenericControllerAdivice {
 	
 	@ExceptionHandler({RecursoInexistenteException.class})
 	public ResponseEntity<String> handle(final RecursoInexistenteException e){
-		final String recursoInexistente = "Recurso inexistente";
+		final String recursoInexistente = "Aluno não encotrado";
 		LOGGER.error(recursoInexistente);
 		return new ResponseEntity<>(recursoInexistente, HttpStatus.NOT_FOUND);
 	}

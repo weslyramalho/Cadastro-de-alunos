@@ -28,6 +28,7 @@ public class AlunosService {
 		
 		new ResponseEntity<>("Cadastrado com sucesso!", HttpStatus.CREATED);
 	}
+	
 	public List<Alunos> findAllPorNome(@RequestParam(required = false) String alunos) {
 		
 		if(alunos != null) {
@@ -35,6 +36,17 @@ public class AlunosService {
 					.filter(al -> al.getNome().contains(alunos))
 					.collect(Collectors.toList());
 		}
-		throw new NomeNaoEncontradoExeception();
+		throw new RecursoInexistenteException();
+	}
+	
+	public List<Alunos> findAllPorIdade(@RequestParam(required = false) Integer idade) {
+		
+		if(idade != null) {
+			return alunosList.stream()
+					.filter(al -> al.getIdade().equals(idade))
+					.collect(Collectors.toList());
+		}
+		throw new RecursoInexistenteException();
+		
 	}
 }
