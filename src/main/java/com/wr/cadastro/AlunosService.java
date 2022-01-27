@@ -21,7 +21,7 @@ public class AlunosService {
 
 	}
 
-	public void addNovoAluno(@RequestBody Alunos alunos) {
+	public void addNovoAluno(Alunos alunos) {
 		
 		int id = alunosList.size() + 1;
 		alunos.setId(id);
@@ -30,7 +30,7 @@ public class AlunosService {
 		new ResponseEntity<>("Cadastrado com sucesso!", HttpStatus.CREATED);
 	}
 	
-	public List<Alunos> findAllPorNome(@RequestParam(required = false) String alunos) {
+	public List<Alunos> findAllPorNome(String alunos) {
 		
 		if(alunos != null) {
 			return alunosList.stream()
@@ -40,7 +40,7 @@ public class AlunosService {
 		throw new RecursoInexistenteException();
 	}
 	
-	public List<Alunos> findAllPorIdade(@RequestParam(required = false) Integer idade) {
+	public List<Alunos> findAllPorIdade(Integer idade) {
 		
 		if(idade != null) {
 			return alunosList.stream()
@@ -51,10 +51,17 @@ public class AlunosService {
 		
 	}
 	
-	public Alunos findById(@PathVariable("id") Integer id) {
-		return this.alunosList.stream()
-				.filter(al -> al.getId().equals(id))
-				.findFirst()
-				.orElseThrow(new RecursoInexistenteException());
+	public List<Alunos> findById(Integer id) {
+		if(id != null) {
+		return  alunosList.stream()
+				.filter(al -> al.getId().equals(id)).collect(Collectors.toList());
+	}
+		throw new RecursoInexistenteException();
+
+	}
+	public void update(Alunos alunos) {
+		alunosList.stream()
+		.filter(al -> al.getId().equals(alunos.getId()))
+		.forEach(al-> al.setNome(alunos.getNome()));
 	}
 }
