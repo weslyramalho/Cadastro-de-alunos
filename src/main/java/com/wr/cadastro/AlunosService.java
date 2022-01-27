@@ -20,6 +20,9 @@ public class AlunosService {
 		this.alunosList= new ArrayList<>();
 
 	}
+	 public List<Alunos> Students (String nome){
+	        return alunosList;
+	   }
 
 	public void addNovoAluno(Alunos alunos) {
 		
@@ -30,11 +33,11 @@ public class AlunosService {
 		new ResponseEntity<>("Cadastrado com sucesso!", HttpStatus.CREATED);
 	}
 	
-	public List<Alunos> findAllPorNome(String alunos) {
+	public List<Alunos> findAllPorNome(String nome) {
 		
-		if(alunos != null) {
+		if(nome != null) {
 			return alunosList.stream()
-					.filter(al -> al.getNome().contains(alunos))
+					.filter(al -> al.getNome().contains(nome))
 					.collect(Collectors.toList());
 		}
 		throw new RecursoInexistenteException();

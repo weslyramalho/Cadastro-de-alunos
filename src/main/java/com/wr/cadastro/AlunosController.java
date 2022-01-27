@@ -18,26 +18,24 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/alunos")
 public class AlunosController {
 	
-	private List<Alunos> alunosList;
-	
-	public AlunosController() {
-	this.alunosList= new ArrayList<>();
-	
-
-	}
-	
+	AlunosService alunosService = new AlunosService();
 	
 	@GetMapping
-	public List<Alunos> findAllPorNome(@RequestParam(required = false) String alunos) {
+	public List<Alunos> buscaAlunos(@RequestParam(required = false) String nome, Integer id, Integer idade) {
 	
-		if(alunos != null) {
-			return alunosList.stream()
-					.filter(al -> al.getNome().contains(alunos))
-					.collect(Collectors.toList());
+		if(nome != null) {
+			return alunosService.findAllPorNome(nome);
 		}
-		return alunosList;
+		if(id != null) {
+			return alunosService.findById(id);
+		}
+		if(idade != null) {
+			return alunosService.findAllPorIdade(idade);
+		}
+		return alunosService.Alunos(nome);
+		
 	}
-	/*
+
 	@GetMapping
 	public List<Alunos> findAllPorIdade(@RequestParam(required = false) Integer idade) {
 		
@@ -49,7 +47,7 @@ public class AlunosController {
 		return alunosList;
 		
 	}
-	*/
+	
 
 
 	
