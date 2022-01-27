@@ -6,9 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 
 
@@ -20,7 +18,7 @@ public class AlunosService {
 		this.alunosList= new ArrayList<>();
 
 	}
-	 public List<Alunos> Students (String nome){
+	 public List<Alunos> Alunos (String alunos){
 	        return alunosList;
 	   }
 
