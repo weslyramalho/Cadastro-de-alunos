@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -48,5 +49,12 @@ public class AlunosService {
 		}
 		throw new RecursoInexistenteException();
 		
+	}
+	
+	public Alunos findById(@PathVariable("id") Integer id) {
+		return this.alunosList.stream()
+				.filter(al -> al.getId().equals(id))
+				.findFirst()
+				.orElseThrow(new RecursoInexistenteException());
 	}
 }
