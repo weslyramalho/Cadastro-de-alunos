@@ -64,4 +64,10 @@ public class AlunosService {
 		.filter(al -> al.getId().equals(alunos.getId()))
 		.forEach(al-> al.setNome(alunos.getNome()));
 	}
+	
+	public ResponseEntity<String> delete(Integer id) {
+		alunosList.removeIf(al-> al.getId().equals(id));
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
+	}
 }
